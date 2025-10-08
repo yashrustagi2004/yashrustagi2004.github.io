@@ -1,0 +1,100 @@
+# Site Settings
+lang: en
+timezone: Asia/Kolkata
+
+# Site Info
+title: Yash Rustagi
+tagline: Cybersecurity Enthusiast | Offensive Security
+description: >-
+  A dedicated cybersecurity enthusiast specialising in offensive security.
+  Red team specialist focused on uncovering vulnerabilities and strengthening defences.
+
+url: "http://yashrustagi.me"
+baseurl: ""
+
+# Social
+github:
+  username: yashrustagi2004
+
+social:
+  name: Yash Rustagi
+  email: yash.rustagi22@st.niituniversity.in
+  links:
+    - https://github.com/yashrustagi2004
+    - https://linkedin.com/in/yashrustagi
+    - https://tryhackme.com/p/Lightning007
+    - https://medium.com/@yashrustagi22.yr
+
+# Theme Settings
+theme_mode: # [light|dark]
+
+# Profile
+avatar: "/assets/img/profile.jpg"
+
+# TOC
+toc: true
+
+# Comments (optional)
+comments:
+  active: # giscus, utterances, disqus
+
+# Analytics (optional)
+google_analytics:
+  id: # Your GA ID
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+
+# Theme
+theme: jekyll-theme-chirpy
+
+# Collections
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Archives
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
+
+# Pagination
+paginate: 10
+paginate_path: "/posts/page:num/"
