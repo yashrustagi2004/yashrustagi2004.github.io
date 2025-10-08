@@ -16,34 +16,37 @@ Hello! I'm Yash Rustagi,a dedicated cybersecurity enthusiast specialising in off
 ---
 ## My Skills
 
-![python logo](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff){: .left } 
-![javascript logo](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000){: .left }
-![nodejs logo](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=fff){: .left }
-![react logo](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000){: .left }
-![html logo](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white){: .left } 
-![mysql logo](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff){: .left }
-![mongodb logo](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=fff){: .left }
-![docker logo](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff){: .left }
-![git logo](https://img.shields.io/badge/Git-000?logo=git&logoColor=F05032){: .left } 
-![github logo](https://img.shields.io/badge/GitHub-000?logo=github&logoColor=fff){: .left } 
-![bash logo](https://img.shields.io/badge/Bash-000?logo=gnubash&logoColor=#4EAA25){: .left } 
-![linux logo](https://img.shields.io/badge/Linux-%23000000.svg?logo=linux&logoColor=white){: .left }
-![azure logo](https://img.shields.io/badge/Azure-0078D4?logo=microsoftazure&logoColor=fff){: .left }
-![vulnerability assessment logo](https://img.shields.io/badge/Vulnerability%20Assessment-8A2BE2?logo=security&logoColor=fff){: .left }
-
-
----
+<div class="skills-badges">
+  <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff" alt="python logo" class="left" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="javascript logo" class="left" />
+  <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=fff" alt="nodejs logo" class="left" />
+  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000" alt="react logo" class="left" />
+  <img src="https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white" alt="html logo" class="left" />
+  <img src="https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff" alt="css logo" class="left" />
+  <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff" alt="mysql logo" class="left" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=fff" alt="mongodb logo" class="left" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff" alt="docker logo" class="left" />
+  <img src="https://img.shields.io/badge/Git-000?logo=git&logoColor=F05032" alt="git logo" class="left" />
+  <img src="https://img.shields.io/badge/GitHub-000?logo=github&logoColor=fff" alt="github logo" class="left" />
+  <img src="https://img.shields.io/badge/Bash-000?logo=gnubash&logoColor=#4EAA25" alt="bash logo" class="left" />
+  <img src="https://img.shields.io/badge/Linux-%23000000.svg?logo=linux&logoColor=white" alt="linux logo" class="left" />
+  <img src="https://img.shields.io/badge/Azure-0078D4?logo=microsoftazure&logoColor=fff" alt="azure logo" class="left" />
+  <img src="https://img.shields.io/badge/Vulnerability%20Assessment-8A2BE2?logo=security&logoColor=fff" alt="vulnerability assessment logo" class="left" />
+</div>
 <br>
+<hr>
 
 ## Cybersecurity Tools
 
-![burp suite logo](https://img.shields.io/badge/Burp%20Suite-FF6633?style=flat&logo=burpsuite&logoColor=white){: .left }
-![metasploit logo](https://img.shields.io/badge/Metasploit-2596CD?style=flat&logo=metasploit&logoColor=white){: .left }
-![wireshark logo](https://img.shields.io/badge/Wireshark-1679A7?style=flat&logo=wireshark&logoColor=white){: .left }
-![OWASP ZAP logo](https://img.shields.io/badge/OWASP%20ZAP-00549E?style=flat&logoColor=white){: .left }
-![nmap logo](https://img.shields.io/badge/Nmap-4682B4?style=flat&logoColor=white){: .left }
-![nessus logo](https://img.shields.io/badge/Nessus-00C176?style=flat&logoColor=white){: .left }
-![sqlmap logo](https://img.shields.io/badge/SQLMap-CC2927?style=flat&logoColor=white){: .left }
+<div class="tools-badges">
+  <img src="https://img.shields.io/badge/Burp%20Suite-FF6633?style=flat&logo=burpsuite&logoColor=white" alt="burp suite logo" class="left" />
+  <img src="https://img.shields.io/badge/Metasploit-2596CD?style=flat&logo=metasploit&logoColor=white" alt="metasploit logo" class="left" />
+  <img src="https://img.shields.io/badge/Wireshark-1679A7?style=flat&logo=wireshark&logoColor=white" alt="wireshark logo" class="left" />
+  <img src="https://img.shields.io/badge/OWASP%20ZAP-00549E?style=flat&logoColor=white" alt="owasp zap logo" class="left" />
+  <img src="https://img.shields.io/badge/Nmap-4682B4?style=flat&logoColor=white" alt="nmap logo" class="left" />
+  <img src="https://img.shields.io/badge/Nessus-00C176?style=flat&logoColor=white" alt="nessus logo" class="left" />
+  <img src="https://img.shields.io/badge/SQLMap-CC2927?style=flat&logoColor=white" alt="sqlmap logo" class="left" />
+</div>
 
 <br>
 
@@ -178,5 +181,47 @@ EC-Council: CEH v13 (July 2025)
   }
 }
 </style>
+
+<style>
+/* Skills badges responsiveness: keep desktop layout (floats) but stack & center on small screens */
+/* Ensure badge containers contain floated badges so following headings start below them */
+.skills-badges,
+.tools-badges {
+  overflow: auto;
+}
+@media (max-width: 768px) {
+  .skills-badges,
+  .tools-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+
+  /* Remove the float styling applied via the badge class attribute */
+  .skills-badges img,
+  .skills-badges a > img,
+  .tools-badges img,
+  .tools-badges a > img {
+    float: none !important;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 48%;
+    height: auto;
+  }
+
+  /* Ensure badges don't get too large on very small screens */
+  @media (max-width: 420px) {
+    .skills-badges img,
+    .skills-badges a > img,
+    .tools-badges img,
+    .tools-badges a > img {
+      max-width: 100%;
+    }
+  }
+}
+</style>
+
 
 ---
