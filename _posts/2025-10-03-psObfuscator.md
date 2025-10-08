@@ -9,6 +9,9 @@ tags: [Projects, Javascript, Powershell]
 
 A browser-based tool to obfuscate PowerShell scripts by randomizing variable names, obfuscating tokens, and injecting comments, reducing Shannon entropy while preserving functionality.
 
+Github Repo: [Click here](https://github.com/yashrustagi2004/psObfuscator)
+
+--- 
 ## Features
 
 - **Variable Randomization**: Replaces variable names with random 20–30 character alphanumeric strings
@@ -17,13 +20,7 @@ A browser-based tool to obfuscate PowerShell scripts by randomizing variable nam
 - **Entropy Analysis**: Displays original and final Shannon entropy with reduction percentage
 - **File Operations**: Supports file upload (`.ps1`/`.txt`) and download of obfuscated scripts
 
-## Getting Started
-
-```bash
-git clone https://github.com/yashrustagi2004/psObfuscator.git
-cd psObfuscator
-# Open index.html in your browser
-```
+---
 
 ## How It Works
 
@@ -34,22 +31,5 @@ The obfuscator works by:
 - Injecting benign comments throughout the script
 - Maintaining script functionality while reducing detectability
 - Calculating and displaying entropy reduction metrics
-
-## Security Note
-
-This tool is intended for educational purposes and legitimate security testing. Always ensure you have proper authorization before using obfuscated scripts in any environment.
-
-## Version History
-
-### v1.1 – Updated release
-- Added token obfuscation feature for string literals and commands
-- Improved comment injection logic
-- Minor UI/UX improvements
-
-### v1.0 – Initial release
-- Variable randomization
-- Comment injection
-- Shannon entropy calculation
-- File upload/download support
 
 ***

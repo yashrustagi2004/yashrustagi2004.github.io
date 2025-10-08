@@ -18,8 +18,9 @@ Hello! I'm Yash Rustagi,a dedicated cybersecurity enthusiast specialising in off
 
 ![python logo](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff){: .left } 
 ![javascript logo](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000){: .left }
+![nodejs logo](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=fff){: .left }
+![react logo](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000){: .left }
 ![html logo](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white){: .left } 
-![css logo](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff){: .left } 
 ![mysql logo](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff){: .left }
 ![mongodb logo](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=fff){: .left }
 ![docker logo](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff){: .left }
@@ -27,6 +28,9 @@ Hello! I'm Yash Rustagi,a dedicated cybersecurity enthusiast specialising in off
 ![github logo](https://img.shields.io/badge/GitHub-000?logo=github&logoColor=fff){: .left } 
 ![bash logo](https://img.shields.io/badge/Bash-000?logo=gnubash&logoColor=#4EAA25){: .left } 
 ![linux logo](https://img.shields.io/badge/Linux-%23000000.svg?logo=linux&logoColor=white){: .left }
+![azure logo](https://img.shields.io/badge/Azure-0078D4?logo=microsoftazure&logoColor=fff){: .left }
+![vulnerability assessment logo](https://img.shields.io/badge/Vulnerability%20Assessment-8A2BE2?logo=security&logoColor=fff){: .left }
+
 
 ---
 <br>
@@ -60,7 +64,7 @@ EC-Council: CEH v13 (July 2025)
 ---
 
 <section class="contact-section" id="contact">
-  <h2>Contact Info</h2>
+  <h2>Links</h2>
   <div class="contact-container">
     
     <div class="contact-item">

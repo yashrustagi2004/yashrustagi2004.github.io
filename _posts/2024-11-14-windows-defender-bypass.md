@@ -13,6 +13,8 @@ description: Windows Defender bypass techniques using steganography and obfuscat
 ### Overview
 This project demonstrates an **obfuscated PowerShell reverse shell (backdoor)** with a staged delivery, evading Windows Defender and gaining persistent remote access on a test Windows 11 system.
 
+Github Repo: [Click here](https://github.com/yashrustagi2004/Windows-11-Defender-Bypass)
+
 ***
 
 Wokring PoC: [Click here](https://drive.google.com/file/d/1iTEkN10lV6p9HQgOGtA8Kal_eJSIBo4s/view?usp=drive_link)
@@ -59,15 +61,5 @@ Wokring PoC: [Click here](https://drive.google.com/file/d/1iTEkN10lV6p9HQgOGtA8K
    - When the victim opens the image from the USB drive, the image displays normally.
    - In the background, `wallpaper.exe` downloads and runs `backdoor.ps1`, granting the attacker remote access.
    - Persistence mechanisms ensure continued attacker access even after reboot.
-
-***
-
-### Disclaimer
-
-- This attack scenario was researched and tested in **December 2024**.
-- This project is strictly for educational and ethical research purposes.
-- All tests were performed in isolated, non-production environments.
-- The techniques described should never be used for unauthorized access or harm.
-- Unauthorized use against systems or networks is illegal and unethical.
 
 ***
