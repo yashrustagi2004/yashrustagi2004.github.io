@@ -123,7 +123,6 @@ order: 2
       <div class="ctf-card">
         <h3 class="ctf-title">
           <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-          <span class="security-badge">CTF</span>
         </h3>
         <div class="ctf-date">
           <i class="far fa-calendar-alt"></i> {{ post.date | date: "%B %d, %Y" }}
