@@ -46,6 +46,8 @@ Hello! I'm Yash Rustagi,a dedicated cybersecurity enthusiast specialising in off
   <img src="https://img.shields.io/badge/Nmap-4682B4?style=flat&logoColor=white" alt="nmap logo" class="left" />
   <img src="https://img.shields.io/badge/Nessus-00C176?style=flat&logoColor=white" alt="nessus logo" class="left" />
   <img src="https://img.shields.io/badge/SQLMap-CC2927?style=flat&logoColor=white" alt="sqlmap logo" class="left" />
+  <img src="https://img.shields.io/badge/Autopsy-005571?style=flat&logoColor=white" alt="autopsy logo" class="left" />
+  <img src="https://img.shields.io/badge/FTK%20Imager-003B57?style=flat&logoColor=white" alt="ftk imager logo" class="left" />
 </div>
 
 <br>
@@ -58,11 +60,15 @@ EC-Council: CEH v13 (July 2025)
 
 ---
 
+## CTFs Participation
+
+1. TryHackMe's Industrial Intrusion - 2025: 9th out of 5k+ teams ([certificate](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-QP3IDULAXX.pdf))
+
+---
+
 ![](https://readme-stats-fork-mauve.vercel.app/api/top-langs/?username=yashrustagi2004&theme=blueberry&hide=html,css&hide_border=false&no-bg=true&no-frame=true&layout=compact&langs_count=10)
 
 ![](https://readme-stats-fork-mauve.vercel.app/api/?username=yashrustagi2004&theme=blueberry&rank_icon=github&show_icons=true&count_private=true)
-
-![](https://github-readme-streak-stats-five-roan.vercel.app?user=yashrustagi2004&theme=blueberry)
 
 ---
 

@@ -29,7 +29,7 @@ social:
 theme_mode: # [light|dark]
 
 # Profile
-avatar: "/assets/img/profile.jpg"
+avatar: "/assets/img/lightning.png"
 
 # TOC
 toc: true
