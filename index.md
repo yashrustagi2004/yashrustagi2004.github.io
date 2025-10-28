@@ -11,7 +11,7 @@ permalink: /
 
 ---
 
-Hello! I'm Yash Rustagi,a dedicated cybersecurity enthusiast specialising in offensive security. I aim to build a career as a red team specialist, uncovering critical vulnerabilities, strengthening defences, and enhancing overall cyber resilience. Explore my projects, and writeups to dive into my world of cybersecurity adventures.
+Hello! I'm Yash Rustagi, a cybersecurity enthusiast. Hard to pinpoint but my areas of interet would be web pentesting, cyber forensics, and malware analysis. Here to explore, create, and leave a little mark wherever curiosity takes me. In free time, you will probably find me either binge watching, listenting to music, on a walk outside, sleeping, or writing write-ups (so exhausting).
 
 ---
 ## My Skills
@@ -68,7 +68,8 @@ EC-Council: CEH v13 (July 2025)
 
 ![](https://readme-stats-fork-mauve.vercel.app/api/top-langs/?username=yashrustagi2004&theme=blueberry&hide=html,css&hide_border=false&no-bg=true&no-frame=true&layout=compact&langs_count=10)
 
-![](https://readme-stats-fork-mauve.vercel.app/api/?username=yashrustagi2004&theme=blueberry&rank_icon=github&show_icons=true&count_private=true)
+
+![](https://github-readme-stats.vercel.app/api?username=yashrustagi2004&show_icons=true&count_private=true&theme=blueberry)
 
 ---
 
