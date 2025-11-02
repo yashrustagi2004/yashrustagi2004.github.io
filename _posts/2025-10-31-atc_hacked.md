@@ -1,5 +1,5 @@
 ---
-title: "KPMG CTF 2025 - ACT Hacked"
+title: "KPMG CTF 2025 - ATC Hacked"
 date: 2025-10-23
 categories: [Capture The Flags, KPMG2025]
 tags: [CTF, Writeups, OSINT]
